@@ -1,12 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-import { Loader } from "@/components/animations/Loader";
-import MessageInput from "@/components/inputs/MessageInput";
-import Message from "@/components/Message";
+import dynamic from "next/dynamic"; // Import dynamic from next/dynamic
+
+const Loader = dynamic(() => import("@/components/animations/Loader"), {
+  ssr: false, // This ensures the component is only rendered on the client
+});
+
+const MessageInput = dynamic(() => import("@/components/inputs/MessageInput"), {
+  ssr: false,
+});
+
+const Message = dynamic(() => import("@/components/Message"), {
+  ssr: false,
+});
+
+const ObjSelect = dynamic(() => import("@/components/inputs/ObjSelect"), {
+  ssr: false,
+});
+
 import { BiEdit } from "react-icons/bi";
 import { PiPaperPlaneRightFill } from "react-icons/pi";
-import ObjSelect from "@/components/inputs/ObjSelect";
 import axios from "axios";
 
 const SOURCES = {
