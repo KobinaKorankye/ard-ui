@@ -2,20 +2,12 @@
 
 import React, { useState } from "react";
 import { Loader } from "@/components/animations/Loader";
-import IconTextButton from "@/components/buttons/IconTextButton";
 import MessageInput from "@/components/inputs/MessageInput";
 import Message from "@/components/Message";
-import client from "@/api/client";
 import { BiEdit } from "react-icons/bi";
 import { PiPaperPlaneRightFill } from "react-icons/pi";
-import { Poppins } from "next/font/google";
 import ObjSelect from "@/components/inputs/ObjSelect";
 import axios from "axios";
-
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
 
 const SOURCES = {
   database: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query", osis: "http://54.246.247.31:5000/qa"
@@ -29,7 +21,6 @@ const urlOptions = {
 export default function Chat() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string>("");
-  const [chats, setChats] = useState<any[]>([]);
   const [chatID, setChatID] = useState<string>(Date.now().toString());
   const [messages, setMessages] = useState<any[]>([]);
   const [url, setURL] = useState<string>(Object.keys(urlOptions)[0])
@@ -114,11 +105,11 @@ export default function Chat() {
         <div className={` ml-10 relative flex-1 text-xs shadow rounded overflow-hidden mt-3`}>
           <div className="absolute top-0 w-full h-full overflow-y-auto flex-col">
             <div className="cursor-pointer text-teal-400 font-medium text-[0.8rem] bg-gray-800 rounded-lg tracking-wide shadow py-3 px-3 truncate">New chat</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Student enrollment trends by grade and year</div>
+            {/* <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Student enrollment trends by grade and year</div>
             <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Enrollment statistics for international students</div>
             <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Special needs student enrollment and resources</div>
             <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Tracking the history of school funding by department</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Examining the diversity of student populations</div>
+            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Examining the diversity of student populations</div> */}
           </div>
         </div>
       </div>
