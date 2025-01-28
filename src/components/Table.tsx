@@ -3,6 +3,7 @@
 import { FaSearch, FaSort } from "react-icons/fa";
 import React, { useState } from "react";
 import { BiChevronLeftCircle, BiChevronLeftSquare, BiChevronRightCircle, BiChevronRightSquare } from "react-icons/bi";
+import { formatString } from "../../fxns";
 
 interface TableProps {
     columns?: string[];
@@ -114,7 +115,7 @@ export default function Table({
                             && columnNames?.map((column, index) => (
                                 <th className="px-4 py-2 text-left" key={index}>
                                     <div className={"flex items-center gap-1"}>
-                                        <div>{column}</div>
+                                        <div>{formatString(column)}</div>
                                         <FaSort
                                             onClick={() => handleSort(index)} // Use the column index for sorting
                                             className="cursor-pointer text-gray-400"
