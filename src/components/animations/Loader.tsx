@@ -13,6 +13,8 @@ const animations = {
     bot, bothead
 }
 
-export const Loader = ({ style: s, animationName }: Props) => (
-    <Lottie style={{ width: '10rem', ...s }} animationData={animations[animationName]} />
-);
+export default function Loader({ style: s, animationName }: Props) {
+    return (
+        <Lottie style={{ width: '10rem', ...s }} animationData={animations[animationName]} />
+    )
+};
