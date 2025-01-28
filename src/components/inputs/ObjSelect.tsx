@@ -24,11 +24,11 @@ export default function ObjSelect({
 
     return (
         <div className={`${boxClassName}`}>
-            <label className={`block text-[0.8rem] font-medium mb-1.5 text-gray-600`} htmlFor={name}>
+            <label className={`block  text-[0.6rem] uppercase font-medium mb-1.5 text-gray-400`} htmlFor={name}>
                 {label}
             </label>
             <div
-                className="flex w-full items-center shadow appearance-none rounded border border-slate-300 px-4 py-2 text-gray-900 
+                className="flex w-full items-center dark:bg-darkbg dark:text-blue-400 border border-blue-400 shadow appearance-none px-4 py-2.5 
                 leading-tight"
             >
                 {Icon && <Icon />}
@@ -37,7 +37,7 @@ export default function ObjSelect({
                     disabled={disabled}
                     value={value}
                     onChange={onChange}
-                    className="w-full focus:outline-none focus:shadow-outline bg-transparent dark:bg-darkbg dark:text-white text-sm"
+                    className="w-full focus:outline-none focus:shadow-outline dark:bg-darkbg bg-transparent text-sm"
                     id={name}
                 >
                     {Object.entries(options).map(([key, value], index) => (

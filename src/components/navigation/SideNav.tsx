@@ -34,8 +34,8 @@ export default function SideNav({
 
     return (
         <div className={`flex w-full h-screen bg-bg dark:bg-darkbg`}>
-            <div className="w-[18%] h-full flex flex-col items-center overflow-y-auto pt-[2.88rem] pb-5">
-                <div className="font-bold text-sm text-dark dark:text-white">ARD DASHBOARD</div>
+            <div className="w-[18%] shadow-lg h-full flex flex-col items-center overflow-y-auto pt-[2.88rem] pb-5">
+                <div className="font-bold text-sm text-dark dark:text-white">OSIS BOT</div>
 
                 <div className="mt-[2.99rem] flex flex-col">
                     {
