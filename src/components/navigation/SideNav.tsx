@@ -39,8 +39,8 @@ export default function SideNav({
 
                 <div className="mt-[2.99rem] flex flex-col">
                     {
-                        navs.map((nav) => (
-                            <NavButton {...nav} active={nav.path === pathname} />
+                        navs.map((nav, index) => (
+                            <NavButton key={index} {...nav} active={nav.path === pathname} />
                         ))
                     }
                 </div>

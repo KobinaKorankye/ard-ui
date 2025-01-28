@@ -102,7 +102,7 @@ export default function Chat() {
           <div className="font-medium text-[0.6rem] uppercase text-dark dark:text-gray-300">Conversations</div>
           <div className="flex">
             <div onClick={() => { }} className={`cursor-pointer border-4 border-gray-700 flex items-center gap-[0.74rem] bg-gray-900 text-xs font-bold px-4 py-3 rounded-lg`}>
-              <div className="text-teal-400">Let's have a chat</div>
+              <div className="text-teal-400">{"Let's have a chat"}</div>
               <div className={`text-2xl flex text-teal-500 items-center justify-center rounded-xl`}>
                 <BiEdit />
               </div>
