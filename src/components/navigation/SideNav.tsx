@@ -51,8 +51,8 @@ export default function SideNav({
 
                 <div className="flex flex-col mt-4">
                     {
-                        other_navs.map((nav) => (
-                            <NavButton {...nav} active={nav.path === pathname} />
+                        other_navs.map((nav, index) => (
+                            <NavButton key={index} {...nav} active={nav.path === pathname} />
                         ))
                     }
                 </div>
