@@ -112,12 +112,14 @@ export default function Table({
                     <tr className="border-b border-white/5">
                         {columnNames && columnNames?.length > 0
                             && columnNames?.map((column, index) => (
-                                <th className="px-4 py-2 text-left flex items-center gap-1" key={index}>
-                                    {column}
-                                    <FaSort
-                                        onClick={() => handleSort(index)} // Use the column index for sorting
-                                        className="cursor-pointer text-gray-400"
-                                    />
+                                <th className="px-4 py-2 text-left" key={index}>
+                                    <div className={"flex items-center gap-1"}>
+                                        <div>{column}</div>
+                                        <FaSort
+                                            onClick={() => handleSort(index)} // Use the column index for sorting
+                                            className="cursor-pointer text-gray-400"
+                                        />
+                                    </div>
                                 </th>
                             ))}
                     </tr>
