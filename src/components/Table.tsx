@@ -1,3 +1,5 @@
+"use client";
+
 import { FaSearch, FaSort } from "react-icons/fa";
 import React, { useState } from "react";
 import { BiChevronLeftCircle, BiChevronLeftSquare, BiChevronRightCircle, BiChevronRightSquare } from "react-icons/bi";
