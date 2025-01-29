@@ -24,18 +24,38 @@ import { PiPaperPlaneRightFill } from "react-icons/pi";
 import axios from "axios";
 
 const SOURCES = {
-  database: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query", osis: "http://54.246.247.31:5000/qa"
+  database: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query", osis: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/qa"
 }
 
 const urlOptions = {
   "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query": "Database",
-  "http://54.246.247.31:5000/qa": "Osis Docs",
+  "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/qa": "Osis Docs",
 }
+
+
+// Define the message type with a specific structure
+type Message = {
+  from: "bot" | "person"; // Who sent the message
+  text: string; // The message content
+  chart_data?: { // Optional chart data
+    labels: string[];
+    values: number[];
+    colors: string[];
+  };
+  table_data?: any; // Optional table data, you can refine this if needed
+};
+
+// Define the chat type, which includes an id and a list of messages
+type Chat = {
+  id: string; // Unique identifier for the chat
+  messages: Message[]; // List of messages in this chat
+};
 
 export default function Chat() {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState<string>("");
-  const [chatID, setChatID] = useState<string>(Date.now().toString());
+  const [chatID, setChatID] = useState<string>((new Date()).toString());
+  const [chatList, setChatList] = useState<Chat[]>([]);
   const [messages, setMessages] = useState<any[]>([]);
   const [url, setURL] = useState<string>(Object.keys(urlOptions)[0])
 
@@ -97,7 +117,7 @@ export default function Chat() {
 
   return (
     <div className="flex-1 flex gap-10 overflow-y-auto">
-      <div className="flex flex-[3] flex-col overflow-y-auto pb-5  pt-[2rem]">
+      <div className="flex flex-[3] flex-col overflow-y-auto pb-5 pt-[2rem]">
         <div className="ml-8 flex flex-col gap-5">
           <div className="flex ml-1">
             <ObjSelect label="Knowledge base" value={url} options={urlOptions} onChange={(e) => { setURL(e.target.value) }} />
@@ -106,7 +126,7 @@ export default function Chat() {
         <div className="ml-8 pl-1 flex flex-col gap-4 my-10">
           <div className="font-medium text-[0.6rem] uppercase text-dark dark:text-gray-300">Conversations</div>
           <div className="flex">
-            <div onClick={() => { }} className={`cursor-pointer border-4 border-gray-700 flex items-center gap-[0.74rem] bg-gray-900 text-xs font-bold px-4 py-3 rounded-lg`}>
+            <div onClick={() => { setChatList([...chatList, { id: chatID, messages: messages }]); setChatID((new Date()).toString()); setMessages([]); }} className={`cursor-pointer border-4 border-gray-700 flex items-center gap-[0.74rem] bg-gray-900 text-xs font-bold px-4 py-3 rounded-lg`}>
               <div className="text-teal-400">{"Let's have a chat"}</div>
               <div className={`text-2xl flex text-teal-500 items-center justify-center rounded-xl`}>
                 <BiEdit />
@@ -118,12 +138,10 @@ export default function Chat() {
         <div className="text-[0.6rem] uppercase font-medium text-dark dark:text-gray-400 ml-10">History</div>
         <div className={` ml-10 relative flex-1 text-xs shadow rounded overflow-hidden mt-3`}>
           <div className="absolute top-0 w-full h-full overflow-y-auto flex-col">
-            <div className="cursor-pointer text-teal-400 font-medium text-[0.8rem] bg-gray-800 rounded-lg tracking-wide shadow py-3 px-3 truncate">New chat</div>
-            {/* <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Student enrollment trends by grade and year</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Enrollment statistics for international students</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Special needs student enrollment and resources</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Tracking the history of school funding by department</div>
-            <div className="cursor-pointer text-gray-400 font-medium text-[0.8rem] tracking-wide shadow py-3 px-3 truncate">Examining the diversity of student populations</div> */}
+            {chatList.map((chat, index) => (
+              <div onClick={() => { setChatID(chat.id); setMessages(chat.messages) }} key={index} className="cursor-pointer text-teal-400 font-medium text-[0.8rem] bg-gray-800 rounded-lg tracking-wide shadow py-3 px-3 truncate">{chat.id}</div>
+            ))
+            }
           </div>
         </div>
       </div>
