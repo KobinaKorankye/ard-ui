@@ -172,8 +172,8 @@ export default function Chat() {
           <div onClick={() => { setIsFullScreenChat((prev) => !prev) }} className="absolute top-5 left-5 w-10 h-10 border-2 border-white/50 hover:text-white/80 cursor-pointer text-white/60 text-lg rounded-lg flex items-center justify-center">
             {
               isFullScreenChat ?
-                <CgMaximize /> :
-                <CgMinimize />
+                <CgMinimize /> :
+                <CgMaximize />
             }
           </div>
           <div className="absolute top-5 right-5">
