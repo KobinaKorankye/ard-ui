@@ -24,11 +24,14 @@ export default function ObjSelect({
 
     return (
         <div className={`${boxClassName}`}>
-            <label className={`block  text-[0.6rem] uppercase font-medium mb-1.5 text-gray-400`} htmlFor={name}>
-                {label}
-            </label>
+            {
+                label &&
+                <label className={`block text-[0.6rem] uppercase font-medium mb-1.5 text-gray-400`} htmlFor={name}>
+                    {label}
+                </label>
+            }
             <div
-                className="flex w-full items-center dark:bg-darkbg dark:text-blue-400 border border-blue-400 shadow appearance-none px-4 py-2.5 
+                className="flex w-full rounded-full overflow-hidden items-center dark:bg-darkbg dark:text-teal-100 border-2 border-teal-100 shadow appearance-none px-4 py-2.5 
                 leading-tight"
             >
                 {Icon && <Icon />}
