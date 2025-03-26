@@ -25,11 +25,14 @@ import axios from "axios";
 import { CgMaximize, CgMinimize } from "react-icons/cg";
 
 const SOURCES = {
-  database: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query", osis: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/qa"
+  // database: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query", 
+  database: "http://54.246.247.31:5001/query", 
+  osis: "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/qa"
 }
 
 const urlOptions = {
-  "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query": "Database",
+  // "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/query": "Database",
+  "http://54.246.247.31:5001/query": "Database",
   "https://pkhsns2xwi.execute-api.eu-west-1.amazonaws.com/Prod/qa": "Osis Docs",
 }
 
